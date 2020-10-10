@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { loadHomes } from './store/actions/home.actions';
+import { State } from './store/reducers/home.reducer';
+import { selectCourses } from './store/selectors/home.selectors';
 
 @Component({
   selector: 'app-home',
@@ -11,15 +16,21 @@ export class HomeComponent implements OnInit {
     { field: 'model' },
     { field: 'price' }
   ];
-
-  rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 }
-  ];
-  constructor() { }
-
-  ngOnInit(): void {
+  rowData$;
+  gridApi;
+  gridColumnApi;
+  constructor(private store: Store<State>, private router: Router) {
+    this.rowData$ = this.store.select(selectCourses);
   }
 
+  ngOnInit(): void {
+    this.store.dispatch(loadHomes())
+  }
+  onGridReady(params){
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+    setTimeout(()=>{
+      this.gridApi.sizeColumnsToFit();
+    },0);
+  }
 }
