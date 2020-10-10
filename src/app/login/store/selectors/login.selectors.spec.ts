@@ -1,9 +1,9 @@
 import * as fromLogin from '../reducers/login.reducer';
-import { selectLoginState } from './login.selectors';
+import { selectIsLoggedIn } from './login.selectors';
 
 describe('Login Selectors', () => {
   it('should select the feature state', () => {
-    const result = selectLoginState({
+    const result = selectIsLoggedIn({
       [fromLogin.loginFeatureKey]: {}
     });
 
