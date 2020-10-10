@@ -18,7 +18,10 @@ export class LoginEffects {
       concatMap((action) =>
         /** An EMPTY observable only emits completion. Replace with your own observable API request */
         this.loginSevice.checkLogin(action.data).pipe(
-          map(data => LoginActions.loadLoginsSuccess({ data })),
+          map(data => {
+            console.log(data);
+            return LoginActions.loadLoginsSuccess({ data })
+          }),
           catchError(error => of(LoginActions.loadLoginsFailure({ error }))))
       )
     );

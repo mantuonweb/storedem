@@ -21,6 +21,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   submit(){
-    this.store.dispatch(loadLogins(this.authForm.value))
+    this.store.dispatch(loadLogins({data:this.authForm.value}))
   }
 }

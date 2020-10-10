@@ -4,11 +4,11 @@ import * as LoginActions from '../actions/login.actions';
 export const loginFeatureKey = 'login';
 
 export interface State {
-
+  user: any
 }
 
 export const initialState: State = {
-
+  user: null
 };
 
 
@@ -16,7 +16,9 @@ export const reducer = createReducer(
   initialState,
 
   on(LoginActions.loadLogins, state => state),
-  on(LoginActions.loadLoginsSuccess, (state, action) => state),
+  on(LoginActions.loadLoginsSuccess, (state, action) => {
+    return {...state,user:action.data}
+  }),
   on(LoginActions.loadLoginsFailure, (state, action) => state),
 
 );
