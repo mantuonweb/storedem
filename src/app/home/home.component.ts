@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { take } from 'rxjs/operators';
 import { ModalCourseAddComponent } from './add/add.component';
 import { ModalCourseEditComponent } from './edit/edit.component';
 import { loadHomes } from './store/actions/home.actions';
@@ -43,8 +44,14 @@ export class HomeComponent implements OnInit {
       course
     };
     this.bsModalRef = this.modalService.show(ModalCourseEditComponent, { initialState });
+    this.bsModalRef.onHide.pipe(take(1)).subscribe((e)=>{
+      console.log(e)
+    });
     // this.bsModalRef.content.course = course;
     // this.bsModalRef.content.closeBtnName = 'Close';
+  }
+  onEditHide(e){
+    console.log(e)
   }
   onSelectionChanged(params) {
     this.selectedRows = this.gridApi.getSelectedRows();
