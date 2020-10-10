@@ -53,4 +53,7 @@ export class HomeComponent implements OnInit {
     console.log(data);
     this.openModalWithComponent(data);
   }
+  addCourse(){
+    this.bsModalRef = this.modalService.show(ModalCourseAddComponent);
+  }
 }
