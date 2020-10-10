@@ -12,6 +12,7 @@ import { StoreRouterConnectingModule, routerReducer, NavigationActionTiming } fr
 import { CustomSerializer } from './app-custom-route-serializer';
 import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent
@@ -27,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       serializer: CustomSerializer,
       navigationActionTiming: NavigationActionTiming.PostActivation,
     }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

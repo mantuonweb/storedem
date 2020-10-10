@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { LoginService } from './login.service';
+import { loadLogins } from './store/actions/login.actions';
+import { State } from './store/reducers/login.reducer';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +16,11 @@ export class LoginComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl(''),
   });
-  constructor() { }
+  constructor(private loginService:LoginService,private store: Store<State>, private router:Router) { }
 
   ngOnInit(): void {
   }
   submit(){
-    console.log(this.authForm.value)
+    this.store.dispatch(loadLogins(this.authForm.value))
   }
 }

@@ -8,10 +8,12 @@ import * as fromLogin from './store/reducers/login.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginEffects } from './store/effects/login.effects';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginService } from './login.service';
 
 
 @NgModule({
   declarations: [LoginComponent],
+  providers:[LoginService],
   imports: [
     CommonModule,
     LoginRoutingModule,

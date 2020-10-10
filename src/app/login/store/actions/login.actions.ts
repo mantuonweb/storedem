@@ -1,7 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
 export const loadLogins = createAction(
-  '[Login] Load Logins'
+  '[Login] Load Logins',
+  props<{ data: any }>()
 );
 
 export const loadLoginsSuccess = createAction(
