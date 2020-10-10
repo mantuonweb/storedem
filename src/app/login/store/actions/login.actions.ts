@@ -2,12 +2,12 @@ import { createAction, props } from '@ngrx/store';
 
 export const loadLogins = createAction(
   '[Login] Load Logins',
-  props<{ data: any }>()
+  props<{ user: any }>()
 );
 
 export const loadLoginsSuccess = createAction(
   '[Login] Load Logins Success',
-  props<{ data: any }>()
+  props<{ user: any }>()
 );
 
 export const loadLoginsFailure = createAction(

@@ -17,7 +17,7 @@ export const reducer = createReducer(
 
   on(LoginActions.loadLogins, state => state),
   on(LoginActions.loadLoginsSuccess, (state, action) => {
-    return {...state,user:action.data}
+    return {...state,user:action.user}
   }),
   on(LoginActions.loadLoginsFailure, (state, action) => state),
 
