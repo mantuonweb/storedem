@@ -10,7 +10,8 @@ import { environment } from '../environments/environment';
 
 import { StoreRouterConnectingModule, routerReducer, NavigationActionTiming } from '@ngrx/router-store';
 import { CustomSerializer } from './app-custom-route-serializer';
-
+import { EffectsModule } from '@ngrx/effects';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -18,13 +19,15 @@ import { CustomSerializer } from './app-custom-route-serializer';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     //ng generate @ngrx/schematics:store State --root --module app.module.ts
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule.forRoot({
       serializer: CustomSerializer,
       navigationActionTiming: NavigationActionTiming.PostActivation,
-    })
+    }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
