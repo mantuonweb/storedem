@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AgGridModule } from 'ag-grid-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
       navigationActionTiming: NavigationActionTiming.PostActivation,
     }),
     EffectsModule.forRoot([]),
-    HttpClientModule
+    HttpClientModule,
+    AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent]
