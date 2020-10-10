@@ -18,7 +18,7 @@ export class HomeEffects {
       concatMap((action) =>
         this.homeService.getCaurses().pipe(
           map(caurses => {
-            console.log(caurses)
+            // console.log(caurses)
             return HomeActions.loadHomesSuccess({ caurses })
           }),
           catchError(error => of(HomeActions.loadHomesFailure({ error }))))

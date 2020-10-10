@@ -7,9 +7,9 @@ export class HomeService {
   constructor() { }
   getCaurses(){
     let rowData = [
-      { make: 'Toyota', model: 'Celica', price: 35000 },
-      { make: 'Ford', model: 'Mondeo', price: 32000 },
-      { make: 'Porsche', model: 'Boxter', price: 72000 }
+      { course: 'Let US C', author: 'Yashwant Kantetkar', price: 35000 },
+      { course: 'Pointer With C', author: 'Yashwant Kantetkar', price: 32000 },
+      { course: 'NGRX', author: 'Dunkin Hunter', price: 72000 }
     ];
     return of(rowData)
   }

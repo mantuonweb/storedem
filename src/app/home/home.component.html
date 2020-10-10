@@ -3,6 +3,8 @@
     class="ag-theme-alpine"
     [rowData]="rowData$|async"
     [columnDefs]="columnDefs"
+    (selectionChanged)="onSelectionChanged($event)"
+    (rowDoubleClicked)="onRowEdit($event)"
     (gridReady)="onGridReady($event)"
 >
 </ag-grid-angular>
