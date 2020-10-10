@@ -10,10 +10,8 @@ import { LoginService } from '../../login.service';
 
 @Injectable()
 export class LoginEffects {
-
   loadLogins$ = createEffect(() => {
     return this.actions$.pipe(
-
       ofType(LoginActions.loadLogins),
       concatMap((action) =>
         this.loginSevice.checkLogin(action.user).pipe(

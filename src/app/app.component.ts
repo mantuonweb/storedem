@@ -11,9 +11,8 @@ import { selectFeatureIsLoggedIn } from './store/selectors';
 })
 export class AppComponent {
   title = 'online-courses';
+  isLoggedIn$;
   constructor(private store: Store<AppState>, private router:Router) { 
-    this.store.select(selectFeatureIsLoggedIn).subscribe((usr)=>{
-      console.log(usr);
-    })
+    this.isLoggedIn$ = this.store.select(selectFeatureIsLoggedIn);
   }
 }
