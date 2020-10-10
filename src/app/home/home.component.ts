@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
       course
     };
     this.bsModalRef = this.modalService.show(ModalCourseEditComponent, { initialState });
-    this.bsModalRef.onHide.pipe(take(1)).subscribe((e)=>{
+    this.bsModalRef.content.onSuccess.pipe(take(1)).subscribe((e)=>{
       console.log(e)
     });
     // this.bsModalRef.content.course = course;

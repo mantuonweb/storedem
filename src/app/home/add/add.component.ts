@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'modal-course-add',
@@ -15,11 +16,20 @@ export class ModalCourseAddComponent implements OnInit {
     author: new FormControl(''),
     price: new FormControl('')
   });
- 
-  constructor(public bsModalRef: BsModalRef) {}
+  public onSuccess: Subject<boolean>;
+  constructor(public bsModalRef: BsModalRef) {
+    this.onSuccess = new Subject();
+  }
  
   ngOnInit() {
     // this.list.push('PROFIT!!!');
   }
-
+  save(){
+    this.onSuccess.next(true);
+    this.bsModalRef.hide();
+  }
+  cancel(){
+    this.onSuccess.next(false);
+    this.bsModalRef.hide();
+  }
 }

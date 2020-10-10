@@ -1,6 +1,6 @@
 <div class="modal-header">
     <h4 class="modal-title pull-left">Edit Course</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="cancel()">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
@@ -25,6 +25,6 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
-    <button type="button" class="btn btn-primary" (click)="bsModalRef.hide()">Save</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
 </div>
