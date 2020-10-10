@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { LoginService } from './login.service';
 import { loadLogins } from './store/actions/login.actions';
 import { State } from './store/reducers/login.reducer';
-import { selectIsLoggedIn, selectLoginStatus } from './store/selectors/login.selectors';
+import { selectIsLoggedIn } from './store/selectors/login.selectors';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +16,11 @@ export class LoginComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl(''),
   });
-  constructor(private loginService:LoginService,private store: Store<State>, private router:Router) { }
+  chechLoginStatue$
+  constructor(private store: Store<State>, private router:Router) { }
 
   ngOnInit(): void {
-    this.store.select(selectIsLoggedIn).subscribe((loggedIn)=>{
-      console.log(loggedIn)
+    this.chechLoginStatue$ = this.store.select(selectIsLoggedIn).subscribe((loggedIn)=>{
       if(loggedIn){
         this.router.navigate(['./home']);
       }
@@ -29,5 +28,8 @@ export class LoginComponent implements OnInit {
   }
   submit(){
     this.store.dispatch(loadLogins({user:this.authForm.value}))
+  }
+  ngOnDestroy(){
+    this.chechLoginStatue$.unsubscribe();
   }
 }

@@ -1,9 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
+import { AppState } from './../../../store/reducers';
 import * as LoginActions from '../actions/login.actions';
 
 export const loginFeatureKey = 'login';
 
-export interface State {
+export interface State extends AppState {
   user: any
 }
 
