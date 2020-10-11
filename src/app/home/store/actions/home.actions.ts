@@ -44,4 +44,9 @@ export const editCourseFailure = createAction(
   props<{ error: any }>()
 );
 
+
+//Reset Status
+export const resetSaveStatus = createAction(
+  '[Home] Reset Save Course Status'
+);
 // export  type CourseAction = saveCourseFailure|saveCourseSuccess;

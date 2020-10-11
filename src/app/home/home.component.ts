@@ -7,7 +7,7 @@ import { ModalCourseAddComponent } from './add/add.component';
 import { ModalCourseEditComponent } from './edit/edit.component';
 import { loadHomes } from './store/actions/home.actions';
 import { State } from './store/reducers/home.reducer';
-import { selectCourses } from './store/selectors/home.selectors';
+import { selectCourses, selectCoursesLoading } from './store/selectors/home.selectors';
 
 @Component({
   selector: 'app-home',
@@ -24,13 +24,16 @@ export class HomeComponent implements OnInit {
   gridApi;
   gridColumnApi;
   bsModalRef;
-  selectedRows
+  selectedRows;
+  selectLoading$;
   constructor(private store: Store<State>, private router: Router, private modalService: BsModalService) {
     this.rowData$ = this.store.select(selectCourses);
+    this.selectLoading$ = this.store.select(selectCoursesLoading);
   }
 
   ngOnInit(): void {
-    this.store.dispatch(loadHomes())
+    this.store.dispatch(loadHomes());
+    
   }
   onGridReady(params) {
     this.gridApi = params.api;

@@ -6,49 +6,82 @@ import { act } from '@ngrx/effects';
 export const homeFeatureKey = 'home';
 
 export interface State extends AppState {
-  list:Array<any>
+  loading?: boolean,
+  saved?: boolean,
+  list: Array<any>
 }
 
 export const initialState: State = {
-  list:[]
+  loading: false,
+  saved: false,
+  list: []
 };
 
 
 export const reducer = createReducer(
   initialState,
 
-  on(HomeActions.loadHomes, state => state),
+  on(HomeActions.loadHomes, state => {
+    return {
+      ...state,
+      loading: true
+    }
+  }),
   on(HomeActions.loadHomesSuccess, (state, action) => {
     return {
       ...state,
-      list:action.courses
+      loading: false,
+      list: action.courses
     }
   }),
   on(HomeActions.loadHomesFailure, (state, action) => state),
 
   //Save
-  on(HomeActions.courseSave, state => state),
+  on(HomeActions.courseSave, state => {
+    return {
+      ...state,
+      loading: true,
+      saved: false
+    }
+  }),
   on(HomeActions.saveCourseSuccess, (state, action) => {
     return {
       ...state,
-      list:[...state.list,action.course]
+      loading: false,
+      saved: true,
+      list: [...state.list, action.course]
     }
   }),
   on(HomeActions.saveCourseFailure, (state, action) => state),
 
   //Edit
-  on(HomeActions.courseEdit, state => state),
+  on(HomeActions.courseEdit, state => {
+    return {
+      ...state,
+      loading: true,
+      saved: false
+    }
+  }),
   on(HomeActions.editCourseSuccess, (state, action) => {
-    let newList = state.list.map(item=>{
-      return item.course === action.course.course? action.course:item;
+    let newList = state.list.map(item => {
+      return item.course === action.course.course ? action.course : item;
     });
     console.log(newList);
     return {
       ...state,
-      list:newList
+      loading: false,
+      saved: true,
+      list: newList
     }
   }),
   on(HomeActions.editCourseFailure, (state, action) => state),
+  on(HomeActions.resetSaveStatus, (state, action) => {
+    return {
+      ...state,
+      loading: false,
+      saved: false
+    }
+  })
 
 );
 

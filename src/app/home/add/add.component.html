@@ -1,27 +1,28 @@
 <div class="modal-header">
   <h4 class="modal-title pull-left">Add Course</h4>
   <button type="button" class="close pull-right" aria-label="Close" (click)="cancel()">
-      <span aria-hidden="true">&times;</span>
+    <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <!-- <ul *ngIf="list.length">
-      <li *ngFor="let item of list">{{item}}</li>
-  </ul> -->
-  <!-- {{course|json}} -->
+  <div class="text-center loader" *ngIf="selectLoading$|async">
+    <div class="spinner-border text-info" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
   <form [formGroup]="courseForm" novalidate>
-      <div class="form-group" novalidate>
-          <label for="courseName">Name</label>
-          <input type="text" class="form-control" id="courseName" formControlName="course" placeholder="Name">
-      </div>
-      <div class="form-group" novalidate>
-          <label for="courseAuthor">Author</label>
-          <input type="text" class="form-control" id="courseAuthor" formControlName="author"  placeholder="Author">
-      </div>
-      <div class="form-group" novalidate>
-          <label for="coursePrice">Price</label>
-          <input type="number" class="form-control" id="coursePrice" formControlName="price" placeholder="Price">
-      </div>
+    <div class="form-group" novalidate>
+      <label for="courseName">Name</label>
+      <input type="text" class="form-control" id="courseName" formControlName="course" placeholder="Name">
+    </div>
+    <div class="form-group" novalidate>
+      <label for="courseAuthor">Author</label>
+      <input type="text" class="form-control" id="courseAuthor" formControlName="author" placeholder="Author">
+    </div>
+    <div class="form-group" novalidate>
+      <label for="coursePrice">Price</label>
+      <input type="number" class="form-control" id="coursePrice" formControlName="price" placeholder="Price">
+    </div>
   </form>
 </div>
 <div class="modal-footer">
