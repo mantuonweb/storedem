@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
 
@@ -12,9 +12,9 @@ export class ModalCourseAddComponent implements OnInit {
 
   course
   courseForm = new FormGroup({
-    course: new FormControl(''),
-    author: new FormControl(''),
-    price: new FormControl('')
+    course: new FormControl('',Validators.required),
+    author: new FormControl('',Validators.required),
+    price: new FormControl('',Validators.required)
   });
   public onSuccess: Subject<boolean>;
   constructor(public bsModalRef: BsModalRef) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loadLogins } from './store/actions/login.actions';
@@ -13,8 +13,8 @@ import { selectIsLoggedIn } from './store/selectors/login.selectors';
 })
 export class LoginComponent implements OnInit {
   authForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('',Validators.required),
+    password: new FormControl('',Validators.required),
   });
   chechLoginStatue$
   constructor(private store: Store<State>, private router:Router) { }
