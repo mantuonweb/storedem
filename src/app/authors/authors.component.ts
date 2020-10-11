@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthorsData } from './authors-data';
 
 @Component({
   selector: 'app-authors',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorsComponent implements OnInit {
   columnDefs = [
-    { field: 'course' },
-    { field: 'author' },
-    { field: 'price' }
+    { field: 'key' },
+    { field: 'familyname' },
+    { field: 'familyname' }
   ];
   rowData$;
   gridApi;
@@ -17,7 +18,7 @@ export class AuthorsComponent implements OnInit {
   bsModalRef;
   selectedRows;
   selectLoading$;
-  rowData = [];
+  rowData = AuthorsData;
   constructor() { }
 
   ngOnInit(): void {
@@ -29,8 +30,9 @@ export class AuthorsComponent implements OnInit {
       this.gridApi.sizeColumnsToFit();
     }, 0);
   }
-  onRowEdit(params){
-
+  onRowEdit({ data }) {
+    console.log(data);
+    // this.openModalWithComponent(data);
   }
   onSelectionChanged(row){
 
