@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthorsData } from './authors-data';
+import { Store } from '@ngrx/store';
+import { loadAuthors } from './store/actions/author.actions';
+import { State } from './store/reducers/author.reducer';
+import { selectAuthors, selectAuthorsLoading } from './store/selectors/author.selectors';
 
 @Component({
   selector: 'app-authors',
@@ -19,10 +22,12 @@ export class AuthorsComponent implements OnInit {
   bsModalRef;
   selectedRows;
   selectLoading$;
-  rowData = AuthorsData;
-  constructor(private router:Router,private activatedRoute:ActivatedRoute) { }
+  constructor(private router:Router,private store: Store<State>,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.store.dispatch(loadAuthors());
+    this.rowData$ = this.store.select(selectAuthors);
+    this.selectLoading$ = this.store.select(selectAuthorsLoading);
   }
   onGridReady(params) {
     this.gridApi = params.api;
@@ -37,7 +42,7 @@ export class AuthorsComponent implements OnInit {
   onAdd(){
     this.router.navigate(["new"],{relativeTo: this.activatedRoute});
   }
-  onSelectionChanged(row){
+  onSelectionChanged(params){
 
   }
 }

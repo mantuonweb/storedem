@@ -5,10 +5,10 @@ export const selectAuthorState = createFeatureSelector<fromAuthor.State>(
   fromAuthor.authorFeatureKey
 );
 
-export const selectCourses = createSelector(selectAuthorState,(state)=>{
+export const selectAuthors = createSelector(selectAuthorState,(state)=>{
   return state.authors;
 });
 
-export const selectCoursesLoading = createSelector(selectAuthorState,(state)=>{
+export const selectAuthorsLoading = createSelector(selectAuthorState,(state)=>{
   return state.loading;
 });

@@ -2,16 +2,16 @@
     <div class="text-right" style="margin-bottom: 10px;" >
         <button class="btn btn-primary" (click)="onAdd()">Add</button>
     </div>
-    <!-- <div class="text-center loader" *ngIf="selectLoading$|async">
+    <div class="text-center loader" *ngIf="selectLoading$|async">
         <div class="spinner-border text-info" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div> -->
+    </div>
     <div>
         <ag-grid-angular
         style="width: 100%; height: calc(100vh - 150px);"
         class="ag-theme-alpine"
-        [rowData]="rowData"
+        [rowData]="rowData$|async"
         [columnDefs]="columnDefs"
         (selectionChanged)="onSelectionChanged($event)"
         (rowDoubleClicked)="onRowEdit($event)"
