@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, concatMap } from 'rxjs/operators';
-import { EMPTY, of } from 'rxjs';
+import { of } from 'rxjs';
 
 import * as HomeActions from '../actions/home.actions';
 import { HomeService } from '../../home.service';
@@ -15,18 +15,46 @@ export class HomeEffects {
     return this.actions$.pipe(
 
       ofType(HomeActions.loadHomes),
-      concatMap((action) =>
+      concatMap(() =>
         this.homeService.getCaurses().pipe(
-          map(caurses => {
+          map(courses => {
             // console.log(caurses)
-            return HomeActions.loadHomesSuccess({ caurses })
+            return HomeActions.loadHomesSuccess({ courses })
           }),
           catchError(error => of(HomeActions.loadHomesFailure({ error }))))
       )
     );
   });
 
+  saveCourse$ = createEffect(() => {
+    return this.actions$.pipe(
 
+      ofType(HomeActions.courseSave),
+      concatMap((action) =>
+        this.homeService.saveCourse(action.course).pipe(
+          map(course => {
+            // console.log(caurses)
+            return HomeActions.saveCourseSuccess({ course })
+          }),
+          catchError(error => of(HomeActions.saveCourseFailure({ error }))))
+      )
+    );
+  });
+
+  editCourse$ = createEffect(() => {
+    return this.actions$.pipe(
+
+      ofType(HomeActions.courseEdit),
+      concatMap((action) =>
+        this.homeService.editCourse(action.course).pipe(
+          map(course => {
+            // console.log(caurses)
+            return HomeActions.editCourseSuccess({ course })
+          }),
+          catchError(error => of(HomeActions.editCourseFailure({ error }))))
+      )
+    );
+  });
 
   constructor(private actions$: Actions, private homeService: HomeService) { }
 

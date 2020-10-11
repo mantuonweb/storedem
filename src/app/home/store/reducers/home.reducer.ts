@@ -21,10 +21,34 @@ export const reducer = createReducer(
   on(HomeActions.loadHomesSuccess, (state, action) => {
     return {
       ...state,
-      list:action.caurses
+      list:action.courses
     }
   }),
   on(HomeActions.loadHomesFailure, (state, action) => state),
+
+  //Save
+  on(HomeActions.courseSave, state => state),
+  on(HomeActions.saveCourseSuccess, (state, action) => {
+    return {
+      ...state,
+      list:[...state.list,action.course]
+    }
+  }),
+  on(HomeActions.saveCourseFailure, (state, action) => state),
+
+  //Edit
+  on(HomeActions.courseEdit, state => state),
+  on(HomeActions.editCourseSuccess, (state, action) => {
+    let newList = state.list.map(item=>{
+      return item.course === action.course.course? action.course:item;
+    });
+    console.log(newList);
+    return {
+      ...state,
+      list:newList
+    }
+  }),
+  on(HomeActions.editCourseFailure, (state, action) => state),
 
 );
 
