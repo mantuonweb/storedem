@@ -27,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     EffectsModule.forFeature([HomeEffects]),
     AppBootStrapHelperModule,
     ReactiveFormsModule
-  ]
+  ],
+  entryComponents:[ModalCourseEditComponent,ModalCourseAddComponent]
 })
 export class HomeModule { }
