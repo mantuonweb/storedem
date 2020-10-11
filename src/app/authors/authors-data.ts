@@ -1,33 +1,13 @@
 export const AuthorsData = [{
-	"key": "aakerlund",
-	"givenname": "Johan",
-	"von": "",
-	"familyname": "Aakerlund",
-	"junior": "",
-	"female": false,
-	"died": false
+	"id": "1",
+	"name": "Yashwant Kanetkar",
+	"expertize" :"C,Java,C++"
 }, {
-	"key": "aas",
-	"givenname": "American Astronomical Society",
-	"von": "",
-	"familyname": "",
-	"junior": "",
-	"female": false,
-	"died": false
+	"id": "2",
+	"name": "Dunkin Hunter",
+	"expertize" :"JS,TS,Angular"
 }, {
-	"key": "aavatsmark",
-	"givenname": "Ivar",
-	"von": "",
-	"familyname": "Aavatsmark",
-	"junior": "",
-	"female": false,
-	"died": false
-}, {
-	"key": "abdool",
-	"givenname": "Omar",
-	"von": "",
-	"familyname": "Abdool",
-	"junior": "",
-	"female": false,
-	"died": false
+	"id": "3",
+	"name": "Deborah Kurata",
+	"expertize" :"JS,TS,Angular"
 }];

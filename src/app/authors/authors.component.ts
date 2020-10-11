@@ -12,9 +12,9 @@ import { selectAuthors, selectAuthorsLoading } from './store/selectors/author.se
 })
 export class AuthorsComponent implements OnInit {
   columnDefs = [
-    { field: 'key' },
-    { field: 'familyname' },
-    { field: 'familyname' }
+    { field: 'id' },
+    { field: 'name' },
+    { field: 'expertize' }
   ];
   rowData$;
   gridApi;
