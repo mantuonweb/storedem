@@ -37,7 +37,7 @@ export class AuthorsComponent implements OnInit {
     }, 0);
   }
   onRowEdit({ data }) {
-    this.router.navigate(['edit',data.key],{relativeTo: this.activatedRoute});
+    this.router.navigate(['edit',data.id],{relativeTo: this.activatedRoute});
   }
   onAdd(){
     this.router.navigate(["new"],{relativeTo: this.activatedRoute});

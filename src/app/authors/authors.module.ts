@@ -11,6 +11,7 @@ import { AuthorService } from './author.service';
 import { AgGridModule } from 'ag-grid-angular';
 import { AuthorEditComponent } from './author-edit/author-edit.component';
 import { AuthorAddComponent } from './author-add/author-add.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AuthorAddComponent } from './author-add/author-add.component';
     AuthorsRoutingModule,
     StoreModule.forFeature(fromAuthor.authorFeatureKey, fromAuthor.reducer),
     EffectsModule.forFeature([AuthorEffects]),
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    ReactiveFormsModule
   ]
 })
 export class AuthorsModule { }
