@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorsData } from './authors-data';
 
 @Component({
@@ -19,7 +20,7 @@ export class AuthorsComponent implements OnInit {
   selectedRows;
   selectLoading$;
   rowData = AuthorsData;
-  constructor() { }
+  constructor(private router:Router,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -31,8 +32,10 @@ export class AuthorsComponent implements OnInit {
     }, 0);
   }
   onRowEdit({ data }) {
-    console.log(data);
-    // this.openModalWithComponent(data);
+    this.router.navigate(['edit',data.key],{relativeTo: this.activatedRoute});
+  }
+  onAdd(){
+    this.router.navigate(["new"],{relativeTo: this.activatedRoute});
   }
   onSelectionChanged(row){
 

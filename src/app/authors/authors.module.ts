@@ -9,11 +9,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthorEffects } from './store/effects/author.effects';
 import { AuthorService } from './author.service';
 import { AgGridModule } from 'ag-grid-angular';
+import { AuthorEditComponent } from './author-edit/author-edit.component';
+import { AuthorAddComponent } from './author-add/author-add.component';
 
 
 @NgModule({
   providers:[AuthorService],
-  declarations: [AuthorsComponent],
+  declarations: [AuthorsComponent, AuthorEditComponent, AuthorAddComponent],
   imports: [
     CommonModule,
     AuthorsRoutingModule,

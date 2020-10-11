@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'orders',canActivate: [AuthGuardService], loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
   { path: 'home',canActivate: [AuthGuardService], loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
   { path: 'authors',canActivate: [AuthGuardService], loadChildren: () => import('./authors/authors.module').then(m => m.AuthorsModule) },
-  { path: '**', redirectTo: '/login' }];
+  // { path: '**', redirectTo: '/login' }
+];
 
 
 @NgModule({
