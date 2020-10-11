@@ -6,7 +6,7 @@ export const loadAuthors = createAction(
 
 export const loadAuthorsSuccess = createAction(
   '[Author] Load Authors Success',
-  props<{ data: any }>()
+  props<{ authors: any }>()
 );
 
 export const loadAuthorsFailure = createAction(

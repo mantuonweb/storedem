@@ -14,4 +14,4 @@ export const selectCoursesSaved = createSelector(selectHomeState,(state)=>{
 });
 export const selectCoursesLoading = createSelector(selectHomeState,(state)=>{
   return state.loading;
-})
+});
