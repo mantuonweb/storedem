@@ -18,7 +18,6 @@ export class HomeEffects {
       concatMap(() =>
         this.homeService.getCaurses().pipe(
           map(courses => {
-            // console.log(caurses)
             return HomeActions.loadHomesSuccess({ courses })
           }),
           catchError(error => of(HomeActions.loadHomesFailure({ error }))))
@@ -33,7 +32,6 @@ export class HomeEffects {
       concatMap((action) =>
         this.homeService.saveCourse(action.course).pipe(
           map(course => {
-            // console.log(caurses)
             return HomeActions.saveCourseSuccess({ course })
           }),
           catchError(error => of(HomeActions.saveCourseFailure({ error }))))
@@ -43,12 +41,10 @@ export class HomeEffects {
 
   editCourse$ = createEffect(() => {
     return this.actions$.pipe(
-
       ofType(HomeActions.courseEdit),
       concatMap((action) =>
         this.homeService.editCourse(action.course).pipe(
           map(course => {
-            // console.log(caurses)
             return HomeActions.editCourseSuccess({ course })
           }),
           catchError(error => of(HomeActions.editCourseFailure({ error }))))

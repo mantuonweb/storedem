@@ -1,7 +1,6 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { AppState } from './../../../store/reducers';
 import * as HomeActions from '../actions/home.actions';
-import { act } from '@ngrx/effects';
 
 export const homeFeatureKey = 'home';
 
@@ -34,7 +33,7 @@ export const reducer = createReducer(
       list: action.courses
     }
   }),
-  on(HomeActions.loadHomesFailure, (state, action) => state),
+  on(HomeActions.loadHomesFailure, (state) => state),
 
   //Save
   on(HomeActions.courseSave, state => {
@@ -52,7 +51,7 @@ export const reducer = createReducer(
       list: [...state.list, action.course]
     }
   }),
-  on(HomeActions.saveCourseFailure, (state, action) => state),
+  on(HomeActions.saveCourseFailure, (state) => state),
 
   //Edit
   on(HomeActions.courseEdit, state => {
@@ -74,8 +73,8 @@ export const reducer = createReducer(
       list: newList
     }
   }),
-  on(HomeActions.editCourseFailure, (state, action) => state),
-  on(HomeActions.resetSaveStatus, (state, action) => {
+  on(HomeActions.editCourseFailure, (state) => state),
+  on(HomeActions.resetSaveStatus, (state) => {
     return {
       ...state,
       loading: false,
