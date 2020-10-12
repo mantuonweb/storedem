@@ -1,5 +1,5 @@
 <div class="text-right" style="margin-bottom: 10px;" >
-    <button class="btn btn-primary" (click)="save()">Save</button>
+    <button class="btn btn-primary" (click)="save()" [disabled]="authorForm.invalid">Save</button>
     <button class="btn btn-primary" style="margin-left: 10px;" routerLink="/../authors">Cancel</button>
 </div>
 <form [formGroup]="authorForm" novalidate>
