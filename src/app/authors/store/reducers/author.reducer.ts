@@ -67,7 +67,8 @@ export const reducer = createReducer(
   on(AuthorActions.editAuthors, state => {
     return {
       ...state,
-      loading: true
+      loading: false,
+      saved: false,
     };
   }),
   on(AuthorActions.editAuthorsSuccess, (state, action) => {
@@ -80,7 +81,7 @@ export const reducer = createReducer(
       saved: true,
       authors: newList
     };
-    
+
   }),
   on(AuthorActions.editAuthorsFailure, (state, action) => {
     return {
