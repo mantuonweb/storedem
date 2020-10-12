@@ -25,8 +25,7 @@ export class AuthorEffects {
       withLatestFrom(this.store.select(selectAuthors)),
       filter(([_, authors]) => {
         let status = !authors.length;
-        status && this.store.dispatch(resetAuthorLoading());
-        
+        !status && this.store.dispatch(resetAuthorLoading());
         return status;
       }),
       exhaustMap(() =>
