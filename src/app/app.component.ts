@@ -14,7 +14,7 @@ import { selectFeatureIsLoggedIn } from "./store/selectors";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  title = "online-courses";
+
   isLoggedIn$;
   constructor(private store: Store<AppState>, private router: Router) {
     setTheme("bs4");
