@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { State } from '../store/reducers/author.reducer';
 
 @Component({
   selector: 'app-author-add',
@@ -11,7 +14,12 @@ export class AuthorAddComponent implements OnInit {
     name: new FormControl('',Validators.required),
     expertize: new FormControl('',Validators.required)
   });
-  constructor() { }
+  selectSave$;
+  constructor(
+    private store: Store<State>,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
   }
