@@ -23,11 +23,11 @@ export class AppComponent {
   }
   checkLogin() {
     this.store.select(selectLoginStatus).subscribe(user => {
-      user && sessionStorage.setItem("loggedInStatus", JSON.stringify(user));
+      user && localStorage.setItem("loggedInStatus", JSON.stringify(user));
     });
     setTimeout(() => {
       
-      let session = sessionStorage.getItem("loggedInStatus");
+      let session = localStorage.getItem("loggedInStatus");
       if (session) {
         let user = JSON.parse(session);
         this.store.dispatch(loadLoginsSuccess({ user }));
