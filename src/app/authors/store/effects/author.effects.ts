@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
+import { catchError, map, concatMap, withLatestFrom, filter } from 'rxjs/operators';
 import { EMPTY, of } from 'rxjs';
 
 import * as AuthorActions from '../actions/author.actions';
 import { AuthorService } from '../../author.service';
+import { selectAuthors } from '../selectors/author.selectors';
+import { State } from '../reducers/author.reducer';
+import { Store } from '@ngrx/store';
 
 
 
@@ -27,6 +30,10 @@ export class AuthorEffects {
     return this.actions$.pipe( 
 
       ofType(AuthorActions.addAuthors),
+      // withLatestFrom(this.store.select(selectAuthors)),
+      filter(([action,author])=>{
+        console.log(action,author);
+      }),
       concatMap((action) =>
         /** An EMPTY observable only emits completion. Replace with your own observable API request */
         this.authService.saveAuthor(action.author).pipe(
@@ -51,6 +58,6 @@ export class AuthorEffects {
 
 
 
-  constructor(private actions$: Actions,private authService:AuthorService) {}
+  constructor(private actions$: Actions,private authService:AuthorService, private store: Store<State>) {}
 
 }
