@@ -23,6 +23,31 @@ export class AuthorEffects {
       )
     );
   });
+  saveAuthor$ = createEffect(() => {
+    return this.actions$.pipe( 
+
+      ofType(AuthorActions.addAuthors),
+      concatMap((action) =>
+        /** An EMPTY observable only emits completion. Replace with your own observable API request */
+        this.authService.saveAuthor(action.author).pipe(
+          map(author => AuthorActions.addAuthorsSuccess({ author })),
+          catchError(error => of(AuthorActions.addAuthorsFailure({ error }))))
+      )
+    );
+  });
+
+  editAuthor$ = createEffect(() => {
+    return this.actions$.pipe( 
+
+      ofType(AuthorActions.addAuthors),
+      concatMap((action) =>
+        /** An EMPTY observable only emits completion. Replace with your own observable API request */
+        this.authService.editAuthor(action.author).pipe(
+          map(author => AuthorActions.editAuthorsSuccess({ author })),
+          catchError(error => of(AuthorActions.editAuthorsFailure({ error }))))
+      )
+    );
+  });
 
 
 

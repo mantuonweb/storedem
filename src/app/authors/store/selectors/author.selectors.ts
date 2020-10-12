@@ -12,7 +12,9 @@ export const selectAuthors = createSelector(selectAuthorState, (state) => {
 export const selectAuthorsLoading = createSelector(selectAuthorState, (state) => {
   return state.loading;
 });
-
+export const selectAuthorSaved = createSelector(selectAuthorState,(state)=>{
+  return state.saved;
+});
 export const selectAuthorsById = (id) => {
   return createSelector(selectAuthorState, (state) => {
     return state.authors.find(item=>item.id==id);
