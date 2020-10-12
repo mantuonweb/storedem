@@ -4,7 +4,10 @@ import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { addAuthors, editAuthors } from "../store/actions/author.actions";
 import { State } from "../store/reducers/author.reducer";
-import { selectAuthorsById,selectAuthorSaved } from "../store/selectors/author.selectors";
+import {
+  selectAuthorsById,
+  selectAuthorSaved
+} from "../store/selectors/author.selectors";
 
 @Component({
   selector: "app-author-edit",
@@ -29,18 +32,18 @@ export class AuthorEditComponent implements OnInit {
         this.authorForm.patchValue(this.author);
       });
     });
-    this.selectSave$ = this.store.select(selectAuthorSaved).subscribe((saved)=>{
+    this.selectSave$ = this.store.select(selectAuthorSaved).subscribe(saved => {
       saved && this.onSave();
     });
   }
-  save(){
+  save() {
     let author = this.authorForm.value;
+    author.id = this.author.id;
+    console.log(author);
     this.store.dispatch(editAuthors({ author }));
   }
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
   onSave() {
-    
+    console.log("onSave Completed");
   }
 }
