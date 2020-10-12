@@ -19,14 +19,15 @@ export class AppComponent {
   constructor(private store: Store<AppState>, private router: Router) {
     setTheme("bs4");
     this.isLoggedIn$ = this.store.select(selectFeatureIsLoggedIn);
+  }
+  ngOnInit() {
     this.checkLogin();
   }
   checkLogin() {
-    this.store.select(selectLoginStatus).subscribe(user => {
-      user && localStorage.setItem("loggedInStatus", JSON.stringify(user));
-    });
     setTimeout(() => {
-      
+      this.store.select(selectLoginStatus).subscribe(user => {
+        user && localStorage.setItem("loggedInStatus", JSON.stringify(user));
+      });
       let session = localStorage.getItem("loggedInStatus");
       if (session) {
         let user = JSON.parse(session);
