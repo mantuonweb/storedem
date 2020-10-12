@@ -6,7 +6,7 @@ const selectLoginState = createFeatureSelector<fromLogin.State>(
 );
 
 export const selectLoginStatus = createSelector(selectLoginState,loginState => {
-  return loginState.user;
+  return loginState? loginState.user :null;
 })
 
 export const selectIsLoggedIn = createSelector(selectLoginStatus,user => {
