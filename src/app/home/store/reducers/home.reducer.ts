@@ -80,6 +80,12 @@ export const reducer = createReducer(
       loading: false,
       saved: false
     }
+  }),
+   on(HomeActions.resetLoadingStatus, (state) => {
+    return {
+      ...state,
+      loading: false
+    }
   })
 
 );

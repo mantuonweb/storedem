@@ -5,6 +5,8 @@ import { of } from 'rxjs';
 
 import * as HomeActions from '../actions/home.actions';
 import { HomeService } from '../../home.service';
+import { State } from '../reducers/home.reducer';
+import { Store } from '@ngrx/store';
 
 
 
@@ -52,6 +54,6 @@ export class HomeEffects {
     );
   });
 
-  constructor(private actions$: Actions, private homeService: HomeService) { }
+  constructor(private actions$: Actions, private homeService: HomeService, private store: Store<State>) { }
 
 }

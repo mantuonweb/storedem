@@ -49,4 +49,8 @@ export const editCourseFailure = createAction(
 export const resetSaveStatus = createAction(
   '[Home] Reset Save Course Status'
 );
+
+export const resetLoadingStatus = createAction(
+  '[Home] Reset Loading Course Status'
+);
 // export  type CourseAction = saveCourseFailure|saveCourseSuccess;
