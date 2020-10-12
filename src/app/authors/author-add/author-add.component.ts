@@ -27,6 +27,7 @@ export class AuthorAddComponent implements OnInit {
     this.selectSave$ = this.store.select(selectAuthorSaved).subscribe(saved => {
       saved && this.onSave();
     });
+    
   }
   save() {
     let author = this.authorForm.value;
