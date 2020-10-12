@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { addAuthors, editAuthors } from "../store/actions/author.actions";
+import { editAuthors,resetSaveStatus } from "../store/actions/author.actions";
 import { State } from "../store/reducers/author.reducer";
 import {
   selectAuthorsById,
@@ -24,9 +24,9 @@ export class AuthorEditComponent implements OnInit {
   constructor(
     private store: Store<State>,
     private router: Router,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) {
-    this.route.paramMap.subscribe(({ params }: any) => {
+    this.activatedRoute.paramMap.subscribe(({ params }: any) => {
       this.store.select(selectAuthorsById(params.id)).subscribe(author => {
         this.author = author;
         this.authorForm.patchValue(this.author);
@@ -39,11 +39,11 @@ export class AuthorEditComponent implements OnInit {
   save() {
     let author = this.authorForm.value;
     author.id = this.author.id;
-    console.log(author);
     this.store.dispatch(editAuthors({ author }));
   }
   ngOnInit(): void {}
   onSave() {
-    console.log("onSave Completed");
+    this.store.dispatch(resetSaveStatus());
+     this.router.navigate(['/../authors'],{relativeTo: this.activatedRoute});
   }
 }
