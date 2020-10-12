@@ -97,5 +97,11 @@ export const reducer = createReducer(
       loading: false,
       saved: false
     };
+  }),
+  on(AuthorActions.resetAuthorLoading, state => {
+    return {
+      ...state,
+      loading: false,
+    };
   })
 );

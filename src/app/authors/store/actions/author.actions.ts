@@ -53,4 +53,8 @@ export const resetSaveStatus = createAction(
  '[Author] Reset Author Save'
 );
 
+export const resetAuthorLoading = createAction(
+ '[Author] Reset Author Loading'
+);
+
 
