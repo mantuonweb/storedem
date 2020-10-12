@@ -39,7 +39,7 @@ export class AuthorEffects {
   editAuthor$ = createEffect(() => {
     return this.actions$.pipe( 
 
-      ofType(AuthorActions.addAuthors),
+      ofType(AuthorActions.editAuthors),
       concatMap((action) =>
         /** An EMPTY observable only emits completion. Replace with your own observable API request */
         this.authService.editAuthor(action.author).pipe(

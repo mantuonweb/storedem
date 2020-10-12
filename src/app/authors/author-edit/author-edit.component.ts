@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { addAuthors } from "../store/actions/author.actions";
+import { addAuthors, editAuthors } from "../store/actions/author.actions";
 import { State } from "../store/reducers/author.reducer";
 import { selectAuthorsById,selectAuthorSaved } from "../store/selectors/author.selectors";
 
@@ -33,10 +33,12 @@ export class AuthorEditComponent implements OnInit {
       saved && this.onSave();
     });
   }
-
-  ngOnInit(): void {
+  save(){
     let author = this.authorForm.value;
-    this.store.dispatch(addAuthors({ author }));
+    this.store.dispatch(editAuthors({ author }));
+  }
+  ngOnInit(): void {
+    
   }
   onSave() {
     
